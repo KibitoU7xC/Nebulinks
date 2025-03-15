@@ -24,9 +24,9 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Download and Train YOLO on Roboflow Dataset
 def train_yolo():
-    rf = Roboflow(api_key="YOUR_ROBOFLOW_API_KEY")  # Replace with your API key
-    project = rf.workspace("YOUR_WORKSPACE").project("YOUR_PROJECT")
-    version = project.version("YOUR_VERSION")
+    rf = Roboflow(api_key="gQ1Y4JE37B4B8LwqOMbr")  # Replace with your API key
+    project = rf.workspace("roboflow-jvuqo").project("football-players-detection-3zvbc")
+    version = project.version("12")
     dataset = version.download("yolov8")
 
     # Automatically get the correct dataset path
