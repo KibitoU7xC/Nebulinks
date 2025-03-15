@@ -20,7 +20,7 @@ from roboflow import Roboflow
 app = FastAPI()
 
 # Configure Gemini AI
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+genai.configure(api_key=os.getenv("AIzaSyA5QRZMoLpzVwxoYpkrdaXDfP0kJu91458"))
 
 # Download and Train YOLO on Roboflow Dataset
 def train_yolo():
@@ -33,7 +33,7 @@ def train_yolo():
     dataset_path = dataset.location + "/data.yaml"
 
     # Train the model
-    os.system(f"yolo detect train model=yolov8s.pt data={dataset_path} epochs=100 imgsz=640")
+    os.system(f"yolo detect train model=yolov8s.pt data={dataset_path} epochs=50 imgsz=640")
 
     return "runs/detect/train/weights/best.pt"
 
