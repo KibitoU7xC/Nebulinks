@@ -12,6 +12,11 @@ app = FastAPI()
 # Configure Gemini AI (Ensure your API key is correctly set in environment variables)
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
+import gdown
+url = "https://drive.google.com/file/d/1-HM3Bs5OBrmxySho8ucCtopaRdcOqqNh/view?usp=sharing"
+output = "models/best.pt"
+gdown.download(url, output, quiet=False)
+
 # Load trained YOLOv8 model from "models/best.pt"
 MODEL_PATH = "models/best.pt"
 if not os.path.exists(MODEL_PATH):
