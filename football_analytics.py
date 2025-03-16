@@ -13,7 +13,7 @@ app = FastAPI()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 import gdown
-url = "https://drive.google.com/file/d/1-HM3Bs5OBrmxySho8ucCtopaRdcOqqNh/view?usp=sharing"
+url = "https://drive.google.com/file/d/1-HM3Bs5OBrmxySho8ucCtopaRdcOqqNh"
 output = "models/best.pt"
 gdown.download(url, output, quiet=False)
 
