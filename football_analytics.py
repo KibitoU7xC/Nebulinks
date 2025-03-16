@@ -12,17 +12,28 @@ app = FastAPI()
 # Configure Gemini AI (Ensure your API key is correctly set in environment variables)
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
+import os
 import gdown
-url = "https://drive.google.com/file/d/1-HM3Bs5OBrmxySho8ucCtopaRdcOqqNh"
+from ultralytics import YOLO  # Ensure you have the YOLOv8 library installed
+
+# ✅ Step 1: Create "models" folder if it doesn't exist
+os.makedirs("models", exist_ok=True)
+
+# ✅ Step 2: Correct Google Drive download link
+url = "https://drive.google.com/uc?id=1-HM3Bs5OBrmxySho8ucCtopaRdcOqqNh"
 output = "models/best.pt"
+
+# ✅ Step 3: Download the model
 gdown.download(url, output, quiet=False)
 
-# Load trained YOLOv8 model from "models/best.pt"
+# ✅ Step 4: Check if the file exists before loading
 MODEL_PATH = "models/best.pt"
-if not os.path.exists(MODEL_PATH):
-    raise FileNotFoundError(f"Model file {MODEL_PATH} not found! Place 'best.pt' inside 'models/' folder.")
 
-model = YOLO(MODEL_PATH)  # Load the trained YOLO model
+if not os.path.exists(MODEL_PATH):
+    raise FileNotFoundError(f"Model file {MODEL_PATH} not found! Check if the download was successful.")
+
+# ✅ Step 5: Load the YOLO model
+model = YOLO(MODEL_PATH)
 
 # Tracker class for player movement
 class Tracker:
