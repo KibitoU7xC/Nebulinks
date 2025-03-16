@@ -7,7 +7,7 @@ import os
 app = FastAPI()
 
 # Google Colab API URL (Replace this with the ngrok URL from Colab)
-COLAB_API_URL = "https://24a8-35-229-246-204.ngrok-free.app/process-video/"
+COLAB_API_URL = "https://328c-35-193-212-123.ngrok-free.app/process-video/"
 
 # API Endpoint: Upload Video and Process in Colab
 @app.post("/upload/")
@@ -26,3 +26,5 @@ async def upload_video(file: UploadFile = File(...), player_id: int = Form(...))
 
     # Return AI-processed results
     return response.json()
+
+
